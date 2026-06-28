@@ -6,6 +6,9 @@ const ReelsList = () => {
             <ReelsLayout />
             <ReelsLayout />
             <ReelsLayout />
+            <ReelsLayout />
+            <ReelsLayout />
+            <ReelsLayout />
         </>
     );
 
