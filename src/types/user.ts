@@ -1,19 +1,17 @@
 
 export interface UserRequest {
-    userId: string;
-    email: string;
-    userName: string;
-    fullName: string;
-    bio: string;
-    profilePicUrl: string;
-
-
+    username: string;
+    password: string;
 }
 export interface UserResponse {
     userId: string;
     email: string;
-    userName: string;
+    username: string;
     fullName: string;
     bio: string;
     profilePicUrl: string;
+}
+
+export interface UserToken {
+    token: string;
 }

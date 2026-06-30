@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material"
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -9,22 +9,31 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../layout/FooterLayout/Footer";
+import { logInUser } from "../../api/userApi";
 
 const Login = () => {
 
     const outlinedPasswordId = React.useId();
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const navigate = useNavigate();
 
-    const login = () => {
+    const login = async () => {
 
         // API Call
+        console.log("Log in Called....")
 
-        localStorage.setItem("token", "jwt_token");
-
-        navigate("/");
+        const data = await logInUser({
+            username: username,
+            password: password
+        });
+        console.log(data.token);
+        navigate("/");``~
     };
+console.log(username)
+console.log(password)
 
 
     return (
@@ -108,6 +117,9 @@ const Login = () => {
                             Log in to Social Dunia
                         </Typography>
                         <TextField
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+
                             label="Mobile number, username, email"
                             variant="outlined"
                             sx={{
@@ -163,6 +175,9 @@ const Login = () => {
                         }} variant="outlined">
                             <InputLabel htmlFor={`${outlinedPasswordId}-input`}>Password</InputLabel>
                             <OutlinedInput
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+
                                 id={`${outlinedPasswordId}-input`}
                                 type={showPassword ? 'text' : 'password'}
                                 endAdornment={

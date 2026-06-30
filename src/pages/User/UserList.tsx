@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 
 import { getUsers } from "../../api/userApi";
-import type { UserRequest } from "../../types/user";
+import type { UserResponse } from "../../types/user";
 
 const UserList = () => {
-  const [users, setUsers] = useState<UserRequest[]>([]);
+  const [users, setUsers] = useState<UserResponse[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
