@@ -1,9 +1,8 @@
-import MainLayout from "./layout/MainLayout/MainLayout"
-import UserList from "./pages/User/UserList"
+import AppRoutes from "./routes/AppRoutes"
 
 function App() {
   return (
-      <UserList/>
+      <AppRoutes/>
   )
 }
 
