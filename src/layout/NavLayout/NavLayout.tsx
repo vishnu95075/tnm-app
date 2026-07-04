@@ -13,6 +13,7 @@ import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { HomeOutlined } from "@mui/icons-material";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { Link } from "react-router-dom";
 const NavLayout = () => {
     return (
         <>
@@ -26,35 +27,56 @@ const NavLayout = () => {
                 }}
             >
                 <Stack spacing={1.5} >
-                    <IconButton>
+                    <IconButton
+                        component={Link}
+                        to="/"
+                    >
                         <HomeOutlined sx={{ width: 40, height: 40 }} />
                     </IconButton>
-                    <IconButton     >
+                    <IconButton
+                        component={Link}
+                        to="/like"
+                    >
                         <Badge color="secondary" badgeContent={60} max={10}>
                             <FavoriteBorderOutlinedIcon sx={{ width: 40, height: 40 }} />
                         </Badge>
                     </IconButton>
-                    <IconButton     >
+                    <IconButton
+                        component={Link}
+                        to="/comment"
+                    >
                         <Badge color="secondary" badgeContent={99} max={5}>
                             <CommentOutlinedIcon sx={{ width: 40, height: 40 }} />
                         </Badge>
                     </IconButton>
-                    <IconButton     >
+                    <IconButton
+                        component={Link}
+                        to="/notification"  >
                         <Badge color="secondary" badgeContent={1000} max={20}>
                             <NotificationsNoneIcon sx={{ width: 40, height: 40 }} />
                         </Badge>
                     </IconButton>
-                    <IconButton>
+                    <IconButton component={Link}
+                        to="/reels">
                         <VideoLibraryOutlinedIcon sx={{ width: 40, height: 40 }} />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                        component={Link}
+                        to="/search"
+                    >
                         <SearchIcon sx={{ width: 40, height: 40 }} />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                        component={Link}
+                        to="/create"
+                    >
                         <AddIcon sx={{ width: 40, height: 40 }} />
 
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                        component={Link}
+                        to="/profile"
+                    >
                         <Avatar
                             sx={{ width: 40, height: 40 }}
                             alt="Remy Sharp"

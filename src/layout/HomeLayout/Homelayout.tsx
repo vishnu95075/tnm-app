@@ -6,48 +6,7 @@ import ReelsList from "../ReelsLayout/ReelsList";
 
 const HomeLayout = () => {
     return (
-        <Stack
-            direction="row"
-            spacing={1}
-            sx={{
-                height: "100vh",      
-                overflow: "hidden",   
-            }}
-        >
-            <Stack
-                sx={{
-                    width: "30%",
-                }}
-            >
-                <NavLayout />
-            </Stack>
-
-            <Stack
-                spacing={2}
-                sx={{
-                    width: "30%",
-                    height: "100%",
-                    overflowY: "auto",
-
-                    "&::-webkit-scrollbar": {
-                        display: "none",
-                    },
-
-                    scrollbarWidth: "none",
-
-                    msOverflowStyle: "none",
-                }}
-            >
-                <ReelsList />
-            </Stack>
-            <Stack
-                sx={{
-                    width: "30%",
-                }}
-            >
-                Right
-            </Stack>
-        </Stack>
+        <></>
     );
 }
 
