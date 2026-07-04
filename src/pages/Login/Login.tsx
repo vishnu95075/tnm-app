@@ -22,18 +22,13 @@ const Login = () => {
 
     const login = async () => {
 
-        // API Call
-        console.log("Log in Called....")
-
         const data = await logInUser({
             username: username,
             password: password
         });
-        console.log(data.token);
-        navigate("/");``~
+        localStorage.setItem("token",data.token);
+        navigate("/");
     };
-console.log(username)
-console.log(password)
 
 
     return (
