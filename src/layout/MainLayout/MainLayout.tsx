@@ -8,17 +8,17 @@ import { Outlet } from "react-router-dom"
 const MainLayout = () => {
     return (
         <>
-            {/* <Stack sx={{ width: '100%', height: '100vh' }}>
+            <Stack sx={{ width: '100%', height: '100vh' }}>
                 <Stack direction="row" sx={{ flex: 9 }}>
                     {
-                        false ? <Login /> : <HomeLayout />
+                         <HomeLayout />
 
                     }
                 </Stack>
                 <Stack>
                     <Footer />
                 </Stack>
-            </Stack> */}
+            </Stack>
 
             <Navbar />
             <main>
