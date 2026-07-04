@@ -1,9 +1,7 @@
 import { Stack } from "@mui/material"
-import Login from "../../pages/Login/Login"
 import Footer from "../FooterLayout/Footer"
 import HomeLayout from "../HomeLayout/Homelayout"
-import Navbar from "../../components/Navbar/Navbar"
-import { Outlet } from "react-router-dom"
+
 
 const MainLayout = () => {
     return (
@@ -19,13 +17,6 @@ const MainLayout = () => {
                     <Footer />
                 </Stack>
             </Stack>
-
-            <Navbar />
-            <main>
-                <Outlet />
-            </main>
-
-
         </>
     )
 

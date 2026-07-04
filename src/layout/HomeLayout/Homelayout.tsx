@@ -10,8 +10,8 @@ const HomeLayout = () => {
             direction="row"
             spacing={1}
             sx={{
-                height: "100vh",      // ✅ Full screen height
-                overflow: "hidden",   // ✅ Prevent full page scroll
+                height: "100vh",      
+                overflow: "hidden",   
             }}
         >
             <Stack
