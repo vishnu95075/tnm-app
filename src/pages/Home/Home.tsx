@@ -1,17 +1,11 @@
 import { Stack } from "@mui/material";
-import Stories from "../Stories/Stories";
-
+import Posts from "../Posts/Posts";
 const Home = () => {
 
     return (
         <>
             <Stack>
-                <Stack>
-                    <Stories />
-                </Stack>
-                <Stack>
-                    Post
-                </Stack>
+                <Posts />
             </Stack>
         </>
     );
