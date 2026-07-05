@@ -1,8 +1,18 @@
+import { Stack } from "@mui/material";
+import Stories from "../Stories/Stories";
+
 const Home = () => {
 
     return (
         <>
-            <h2>Home Page</h2>
+            <Stack>
+                <Stack>
+                    <Stories />
+                </Stack>
+                <Stack>
+                    Post
+                </Stack>
+            </Stack>
         </>
     );
 };
