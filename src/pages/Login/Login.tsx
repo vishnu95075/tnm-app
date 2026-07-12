@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material"
+import { Alert, Box, Button, Stack, TextField, Typography } from "@mui/material"
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -17,23 +17,37 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [err, setErr] = useState("");
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const navigate = useNavigate();
 
-    const login = async () => {
+    const login = async (e: any) => {
+        e.preventDefault();
+        console.log("data login button clicked")
+        try {
+            const data = await logInUser({
+                username: username,
+                password: password
 
-        const data = await logInUser({
-            username: username,
-            password: password
-        });
-        localStorage.setItem("token",data.token);
-        navigate("/");
+            });
+            console.log("data login time" + data)
+            localStorage.setItem("token", data.token);
+            navigate("/");
+
+        } catch (error) {
+            setErr((error as Error).message)
+            console.log("data login button Error ", error);
+        }
+
     };
 
 
     return (
         <>
             <Stack sx={{ width: '100%', height: '100vh' }}>
+                {
+                    (err.length > 1) ? (<Alert severity="error">{err}</Alert>) : (<></>)
+                }
                 <Stack direction="row" sx={{ flex: 9 }}>
                     <Box sx={{
                         width: '50%', bgcolor: '#000', color: 'white', display: 'flex',
