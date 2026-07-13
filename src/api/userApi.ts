@@ -20,3 +20,8 @@ export const logInUser = async (
   const response = await api.post<UserToken>("/auth/api/login", user);
   return response.data;
 };
+
+export const getUserProfileByUserName = async (userName: string): Promise<UserResponse> => {
+  const response = await api.get<UserResponse>(`user/user/profile/${userName}`);
+  return response.data;
+};

@@ -17,7 +17,7 @@ import {
   BookmarkBorder,
   FavoriteBorder,
   GridOn,
-//   ChatBubbleOutline,
+  //   ChatBubbleOutline,
   Logout,
   Edit,
   CommentBankOutlined,
@@ -25,6 +25,8 @@ import {
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from '@tanstack/react-query';
+import { getUserProfileByUserName } from '../../api/userApi';
 
 const reels = [
   "https://picsum.photos/300?1",
@@ -56,8 +58,11 @@ const comments = [
   "Keep Going 🚀",
   "Loved it 😍",
 ];
+interface UserProfileProps {
+  userName: string;
+}
 
-export default function Profile() {
+export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
   const navigate = useNavigate();
 
   const [tab, setTab] = useState(0);
@@ -66,7 +71,16 @@ export default function Profile() {
     localStorage.removeItem("token");
     navigate("/login");
   };
+  const { data: profile, isLoading, isError } = useQuery({
+    queryKey: ['userProfile', userName],
+    queryFn: () => getUserProfileByUserName("Vishnu"),
+    enabled: !!userName,
+  });
 
+  if (isLoading) return <div>Loading profile...</div>;
+  if (isError) return <div>Error loading profile</div>;
+
+console.log("Data ",profile?.profilePicUrl)
   const renderGrid = (images: string[]) => (
     <Grid container spacing={2} mt={1}>
       {images.map((img, index) => (
@@ -92,6 +106,8 @@ export default function Profile() {
     </Grid>
   );
 
+
+
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 5 }}>
       {/* Cover */}
@@ -114,7 +130,7 @@ export default function Profile() {
         alignItems={{ xs: "center", md: "flex-end" }}
       >
         <Avatar
-          src="https://i.pravatar.cc/300"
+          src={profile?.profilePicUrl}
           sx={{
             width: 170,
             height: 170,
@@ -130,11 +146,11 @@ export default function Profile() {
             flexWrap="wrap"
           >
             <Typography variant="h4" fontWeight={700}>
-              Vishnu Kumar
+              {profile?.fullName}
             </Typography>
 
             <Typography color="text.secondary">
-              @vishnu_dev
+              @{profile?.username}
             </Typography>
           </Stack>
 
