@@ -150,7 +150,7 @@ export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
             </Typography>
 
             <Typography color="text.secondary">
-              @{profile?.username}
+              @{profile?.userName}
             </Typography>
           </Stack>
 
@@ -244,7 +244,7 @@ export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
 
                 <Box>
                   <Typography fontWeight={600}>
-                    @vishnu_dev
+                    @post_by_user
                   </Typography>
 
                   <Typography color="text.secondary">

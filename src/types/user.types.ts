@@ -6,7 +6,7 @@ export interface UserRequest {
 export interface UserResponse {
     userId: string;
     email: string;
-    username: string;
+    userName: string;
     fullName: string;
     bio: string;
     profilePicUrl: string;
