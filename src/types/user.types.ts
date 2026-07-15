@@ -12,6 +12,3 @@ export interface UserResponse {
     profilePicUrl: string;
 }
 
-export interface UserToken {
-    token: string;
-}

@@ -9,7 +9,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../layout/FooterLayout/Footer";
-import { logInUser } from "../../api/userApi";
+import { logInUser } from "../../api/authApi";
 
 const Login = () => {
 

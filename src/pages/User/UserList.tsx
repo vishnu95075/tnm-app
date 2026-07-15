@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 import { getUsers } from "../../api/userApi";
-import type { UserResponse } from "../../types/user";
+import type { UserResponse } from "../../types/user.types";
 
 const UserList = () => {
   const [users, setUsers] = useState<UserResponse[]>([]);

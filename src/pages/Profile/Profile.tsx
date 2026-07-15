@@ -24,9 +24,10 @@ import {
 } from "@mui/icons-material";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
 import { getUserProfileByUserName } from '../../api/userApi';
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 
 const reels = [
   "https://picsum.photos/300?1",
@@ -71,16 +72,15 @@ export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
     localStorage.removeItem("token");
     navigate("/login");
   };
-  const { data: profile, isLoading, isError } = useQuery({
-    queryKey: ['userProfile', userName],
-    queryFn: () => getUserProfileByUserName("Vishnu"),
-    enabled: !!userName,
-  });
+  
+  const token = localStorage.getItem("token");
+  if (!token) return <Navigate to="/login" replace />;
 
+  const { data:profile,isLoading,isError } = useCurrentUser(token);
   if (isLoading) return <div>Loading profile...</div>;
   if (isError) return <div>Error loading profile</div>;
 
-console.log("Data ",profile?.profilePicUrl)
+  console.log("Data ", profile?.profilePicUrl)
   const renderGrid = (images: string[]) => (
     <Grid container spacing={2} mt={1}>
       {images.map((img, index) => (

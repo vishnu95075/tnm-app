@@ -1,4 +1,3 @@
-import { imgAvatar } from "../../assets/Common";
 import {
     Stack,
     Paper,
@@ -13,8 +12,27 @@ import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { HomeOutlined } from "@mui/icons-material";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
+
 const NavLayout = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        return <Navigate to="/login" replace />;
+    }
+
+    const {
+        data: profile,
+        isLoading,
+        isError,
+        error,
+        isFetching,
+        refetch,
+    } = useCurrentUser(token);
+
+    if (isLoading) return <div>Loading profile...</div>;
+    if (isError) return <div>Error loading profile</div>;
+
     return (
         <>
             <Paper
@@ -80,7 +98,7 @@ const NavLayout = () => {
                         <Avatar
                             sx={{ width: 40, height: 40 }}
                             alt="Remy Sharp"
-                            src={imgAvatar}
+                            src={profile?.profilePicUrl}
                         />
                     </IconButton>
                 </Stack>
