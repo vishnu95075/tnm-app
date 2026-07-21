@@ -78,7 +78,10 @@ export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
 
   const { data:profile,isLoading,isError } = useCurrentUser(token);
   if (isLoading) return <div>Loading profile...</div>;
-  if (isError) return <div>Error loading profile</div>;
+  if (isError) {
+        localStorage.removeItem("token");
+        return <div>Error loading profile</div>;
+    }
 
   console.log("Data ", profile?.profilePicUrl)
   const renderGrid = (images: string[]) => (

@@ -31,7 +31,10 @@ const NavLayout = () => {
     } = useCurrentUser(token);
 
     if (isLoading) return <div>Loading profile...</div>;
-    if (isError) return <div>Error loading profile</div>;
+    if (isError) {
+        localStorage.removeItem("token");
+        return <div>Error loading profile</div>;
+    }
 
     return (
         <>
