@@ -59,11 +59,9 @@ const comments = [
   "Keep Going 🚀",
   "Loved it 😍",
 ];
-interface UserProfileProps {
-  userName: string;
-}
 
-export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
+
+export default function Profile() {
   const navigate = useNavigate();
 
   const [tab, setTab] = useState(0);
@@ -189,8 +187,9 @@ export default function Profile({ userName = "Vishnu" }: UserProfileProps) {
             <Button
               variant="contained"
               startIcon={<Edit />}
+              onClick={() => navigate('/edit-profile')}
             >
-              Edit Profile
+              Edit Profile 
             </Button>
 
             <Button
