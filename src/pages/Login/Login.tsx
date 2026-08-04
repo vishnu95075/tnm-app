@@ -222,7 +222,6 @@ const Login = () => {
                             Login
                         </Button>
                         <Button
-                            onClick={() => navigate("/register")}
                             variant="contained"
                             disabled={false}
                             sx={{
@@ -238,6 +237,7 @@ const Login = () => {
                         <br />
                         <br />
                         <Button
+                            onClick={() => navigate("/register")}
                             variant="contained"
                             sx={{
                                 p: 1,
