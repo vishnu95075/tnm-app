@@ -89,6 +89,7 @@ export default function EditProfile() {
 
   const handleSave = async () => {
     if (!form.fullName.trim()) {
+      // toast.error('Name is required')
       alert("Name is required");
       return;
     }
@@ -197,14 +198,6 @@ export default function EditProfile() {
         </Box>
 
         <CardContent sx={{ mt: 9 }}>
-          <Typography
-            variant="h5"
-            fontWeight={700}
-            gutterBottom
-          >
-            Edit Profile
-          </Typography>
-
           <Divider sx={{ mb: 4 }} />
 
           <Grid container spacing={3}>
@@ -218,7 +211,7 @@ export default function EditProfile() {
               />
             </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={12}>
               <TextField
                 fullWidth
                 label="Username"
@@ -293,9 +286,9 @@ export default function EditProfile() {
                 name="dob"
                 value={form.dob}
                 onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                // InputLabelProps={{
+                //   shrink: true,
+                // }}
               />
             </Grid>
 

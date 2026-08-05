@@ -2,9 +2,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUserProfileByToken } from "../api/userApi";
 
-export const CURRENT_USER_QUERY_KEY = ["me"];
 
-export const useCurrentUser = (token:string) => {
+export const useCurrentUser = (token: string) => {
+    const CURRENT_USER_QUERY_KEY = [token];
 
     return useQuery({
         queryKey: CURRENT_USER_QUERY_KEY,

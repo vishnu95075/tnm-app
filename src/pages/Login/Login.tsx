@@ -24,6 +24,7 @@ const Login = () => {
     const login = async (e: any) => {
         e.preventDefault();
         console.log("data login button clicked")
+        localStorage.removeItem("token");
         try {
             const data = await logInUser({
                 username: username,
