@@ -16,6 +16,7 @@ const Register = () => {
     const outlinedPasswordId = React.useId();
     const [showPassword, setShowPassword] = useState(false);
     const [fullName, setFullName] = useState("");
+    const [dob, setDob] = useState("2000-01-01");
     const [username, setUsername] = useState("");
 
     const [email, setEmail] = useState("");
@@ -132,7 +133,7 @@ const Register = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
 
-                            label="Enter unique username"
+                            label="Username"
                             variant="outlined"
                             sx={{
                                 width: '350px',
@@ -160,6 +161,7 @@ const Register = () => {
                                 },
                             }}
                         />
+
                         <TextField
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -192,6 +194,7 @@ const Register = () => {
                                 },
                             }}
                         />
+
 
                         <FormControl sx={{
                             '& .MuiOutlinedInput-input': {
@@ -240,6 +243,73 @@ const Register = () => {
                                 label="Password"
                             />
                         </FormControl>
+
+
+                        <TextField
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+
+                            label="Email"
+                            variant="outlined"
+                            sx={{
+                                width: '350px',
+                                my: 1,
+
+                                '& .MuiOutlinedInput-input': {
+                                    padding: '20px 28px',
+                                },
+
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.1px',
+                                        borderRadius: '12px',
+
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.5px',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.5px',
+                                    },
+                                },
+                            }}
+                        />
+                        <TextField
+                            value={dob}
+                            onChange={(e) => setDob(e.target.value)}
+                            type="date"
+                            label="Date of birth"
+                            variant="outlined"
+                            sx={{
+                                width: '350px',
+                                my: 1,
+
+                                '& .MuiOutlinedInput-input': {
+                                    padding: '20px 28px',
+                                },
+
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.1px',
+                                        borderRadius: '12px',
+
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.5px',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: '#888',
+                                        borderWidth: '2.5px',
+                                    },
+                                },
+                            }}
+                        />
+
                         <Button
                             variant="contained"
                             disabled={false}
