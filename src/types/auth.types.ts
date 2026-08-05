@@ -1,5 +1,7 @@
 export interface RegisterAuthRequest {
     username: string;
+    fullName:string;
+    dob:string;
     email:string;
     password: string;
 }
