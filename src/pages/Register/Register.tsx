@@ -30,6 +30,8 @@ const Register = () => {
         try {
             const data = await registerUser({
                 username: username,
+                fullName: fullName,
+                dob:dob,
                 email: email,
                 password: password
 
