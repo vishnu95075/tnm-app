@@ -249,7 +249,7 @@ const Register = () => {
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
 
-                            label="Email"
+                            label="Full name"
                             variant="outlined"
                             sx={{
                                 width: '350px',
