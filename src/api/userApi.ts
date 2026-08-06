@@ -24,7 +24,20 @@ export const getUserProfileByUserName = async (username: string): Promise<UserRe
   return response.data;
 };
 
-export const uploadAvatar = async (username: string): Promise<MassageResponse> => {
-  const response = await api.get<MassageResponse>(`user/user/avatar/${username}`);
+export const uploadAvatar = async (username: string, file: File): Promise<MassageResponse> => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  console.log("User Name ", username);
+  const response = await api.patch<MassageResponse>(
+    `/user/user/avatar/${"vishnu"}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+
+  );
   return response.data;
 }
