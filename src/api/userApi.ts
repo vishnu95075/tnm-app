@@ -1,5 +1,5 @@
 import api from "./axios";
-import type { UserRequest, UserResponse } from "../types/user.types";
+import type { MassageResponse, UserRequest, UserResponse } from "../types/user.types";
 
 export const createUser = async (
   user: UserRequest
@@ -19,7 +19,12 @@ export const getUserProfileByToken = async (token: string): Promise<UserResponse
   return response.data;
 };
 
-export const getUserProfileByUserName = async (userName: string): Promise<UserResponse> => {
-  const response = await api.get<UserResponse>(`user/user/profile/${userName}`);
+export const getUserProfileByUserName = async (username: string): Promise<UserResponse> => {
+  const response = await api.get<UserResponse>(`user/user/profile/${username}`);
   return response.data;
 };
+
+export const uploadAvatar = async (username: string): Promise<MassageResponse> => {
+  const response = await api.get<MassageResponse>(`user/user/avatar/${username}`);
+  return response.data;
+}

@@ -151,7 +151,7 @@ export default function Profile() {
             </Typography>
 
             <Typography color="text.secondary">
-              @{profile?.userName}
+              @{profile?.username}
             </Typography>
           </Stack>
 

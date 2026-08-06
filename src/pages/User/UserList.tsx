@@ -47,7 +47,7 @@ const UserList = () => {
           <TableBody>
             {users.map((user) => (
               <TableRow key={user.userId}>
-                <TableCell>{user.userName}</TableCell>
+                <TableCell>{user.username}</TableCell>
                 <TableCell>{user.fullName}</TableCell>
                 <TableCell> 
                     <Avatar src={user.profilePicUrl}/>

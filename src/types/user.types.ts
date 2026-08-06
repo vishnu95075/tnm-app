@@ -6,9 +6,12 @@ export interface UserRequest {
 export interface UserResponse {
     userId: string;
     email: string;
-    userName: string;
+    username: string;
     fullName: string;
     bio: string;
     profilePicUrl: string;
 }
 
+export interface MassageResponse{
+    massage:string;
+}

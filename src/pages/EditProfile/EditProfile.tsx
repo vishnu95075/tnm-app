@@ -18,6 +18,9 @@ import {
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { Navigate } from "react-router-dom";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
+import { uploadAvatar } from "../../api/userApi";
 
 interface EditProfileData {
   fullName: string;
@@ -54,6 +57,15 @@ export default function EditProfile() {
     cover:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600",
   });
+  const token = localStorage.getItem("token");
+  if (!token) return <Navigate to="/login" replace />;
+
+  const { data: profile, isLoading, isError } = useCurrentUser(token);
+  if (isLoading) return <div>Loading profile...</div>;
+  if (isError) {
+    localStorage.removeItem("token");
+    return <div>Error loading profile</div>;
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -73,6 +85,8 @@ export default function EditProfile() {
     if (!file) return;
 
     const url = URL.createObjectURL(file);
+
+    const data = uploadAvatar(profile?.username)
 
     if (type === "avatar") {
       setForm({
@@ -164,7 +178,7 @@ export default function EditProfile() {
           />
 
           <Avatar
-            src={form.avatar}
+            src={profile?.profilePicUrl}
             sx={{
               width: 150,
               height: 150,
@@ -286,9 +300,9 @@ export default function EditProfile() {
                 name="dob"
                 value={form.dob}
                 onChange={handleChange}
-                // InputLabelProps={{
-                //   shrink: true,
-                // }}
+              // InputLabelProps={{
+              //   shrink: true,
+              // }}
               />
             </Grid>
 
