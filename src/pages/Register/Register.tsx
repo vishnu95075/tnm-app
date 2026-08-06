@@ -31,7 +31,7 @@ const Register = () => {
             const data = await registerUser({
                 username: username,
                 fullName: fullName,
-                dob:dob,
+                dob: dob,
                 email: email,
                 password: password
 
