@@ -70,16 +70,16 @@ export default function Profile() {
     localStorage.removeItem("token");
     navigate("/login");
   };
-  
+
   const token = localStorage.getItem("token");
   if (!token) return <Navigate to="/login" replace />;
 
-  const { data:profile,isLoading,isError } = useCurrentUser(token);
+  const { data: profile, isLoading, isError } = useCurrentUser(token);
   if (isLoading) return <div>Loading profile...</div>;
   if (isError) {
-        localStorage.removeItem("token");
-        return <div>Error loading profile</div>;
-    }
+    localStorage.removeItem("token");
+    return <div>Error loading profile</div>;
+  }
 
   console.log("Data ", profile?.profilePicUrl)
   const renderGrid = (images: string[]) => (
@@ -189,7 +189,7 @@ export default function Profile() {
               startIcon={<Edit />}
               onClick={() => navigate('/edit-profile')}
             >
-              Edit Profile 
+              Edit Profile
             </Button>
 
             <Button
