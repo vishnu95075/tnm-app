@@ -79,7 +79,6 @@ export default function EditProfile() {
 
   const previewImage = (
     e: React.ChangeEvent<HTMLInputElement>,
-    username: string,
     type: "avatar" | "cover"
   ) => {
     const file = e.target.files?.[0];
@@ -88,10 +87,13 @@ export default function EditProfile() {
 
     const url = URL.createObjectURL(file);
 
-    const data = uploadAvatar(username, file);
+    if (profile?.username != null) {
+      uploadAvatar(profile?.username, file);
+      alert("Sucesfully Saved");
+      window.location.reload();
+    }
 
-    alert("Sucesfully Saved");
-    console.log("Data is ", data);
+
     if (type === "avatar") {
       setForm({
         ...form,
@@ -179,7 +181,7 @@ export default function EditProfile() {
             type="file"
             accept="image/*"
             ref={coverInputRef}
-            onChange={(e) => previewImage(e, "vishnu", "cover")}
+            onChange={(e) => previewImage(e, "cover")}
           />
 
           <Avatar
@@ -212,7 +214,7 @@ export default function EditProfile() {
             type="file"
             accept="image/*"
             ref={avatarInputRef}
-            onChange={(e) => previewImage(e, "vishnu", "cover")}
+            onChange={(e) => previewImage(e, "avatar")}
           />
         </Box>
 
