@@ -11,7 +11,6 @@ import {
   MenuItem,
   Stack,
   TextField,
-  Typography,
   CircularProgress,
 } from "@mui/material";
 
@@ -21,7 +20,6 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { Navigate } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { uploadAvatar } from "../../api/userApi";
-import api from "../../api/axios";
 
 interface EditProfileData {
   fullName: string;
