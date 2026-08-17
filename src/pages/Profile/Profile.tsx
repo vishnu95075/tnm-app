@@ -25,9 +25,9 @@ import {
 
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useQuery } from '@tanstack/react-query';
-import { getUserProfileByUserName } from '../../api/userApi';
+
 import { useCurrentUser } from "../../hooks/useCurrentUser";
+import MyPosts from "./MyPosts";
 
 const reels = [
   "https://picsum.photos/300?1",
@@ -110,154 +110,168 @@ export default function Profile() {
 
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 5 }}>
-      {/* Cover */}
+    <Stack
+      spacing={2}
+      sx={{
+        height: "100vh", // or 700, "calc(100vh - 64px)", etc.
+        overflowY: "auto",
+        p: 2,
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
 
-      <Box
-        sx={{
-          height: 220,
-          borderRadius: 3,
-          background:
-            "linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045)",
-        }}
-      />
+    >
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 5 }}>
+        {/* Cover */}
 
-      {/* Profile */}
-
-      <Stack
-        direction={{ xs: "column", md: "row" }}
-        spacing={5}
-        mt={-8}
-        alignItems={{ xs: "center", md: "flex-end" }}
-      >
-        <Avatar
-          src={profile?.profilePicUrl}
+        <Box
           sx={{
-            width: 170,
-            height: 170,
-            border: "5px solid white",
+            height: 220,
+            borderRadius: 3,
+            background:
+              "linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045)",
           }}
         />
 
-        <Box flex={1}>
-          <Stack
-            direction="row"
-            spacing={2}
-            alignItems="center"
-            flexWrap="wrap"
-          >
-            <Typography variant="h4" fontWeight={700}>
-              {profile?.fullName}
+        {/* Profile */}
+
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={5}
+          mt={-8}
+          alignItems={{ xs: "center", md: "flex-end" }}
+        >
+          <Avatar
+            src={profile?.profilePicUrl}
+            sx={{
+              width: 170,
+              height: 170,
+              border: "5px solid white",
+            }}
+          />
+
+          <Box flex={1}>
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              flexWrap="wrap"
+            >
+              <Typography variant="h4" fontWeight={700}>
+                {profile?.fullName}
+              </Typography>
+
+              <Typography color="text.secondary">
+                @{profile?.username}
+              </Typography>
+            </Stack>
+
+            <Typography mt={1} color="text.secondary">
+              Full Stack Developer • Java • Spring Boot • React •
+              Creating awesome social apps 🚀
             </Typography>
 
-            <Typography color="text.secondary">
-              @{profile?.username}
-            </Typography>
-          </Stack>
+            <Stack direction="row" spacing={5} mt={3}>
+              <Box>
+                <Typography fontWeight="bold">128</Typography>
+                <Typography color="text.secondary">
+                  Posts
+                </Typography>
+              </Box>
 
-          <Typography mt={1} color="text.secondary">
-            Full Stack Developer • Java • Spring Boot • React •
-            Creating awesome social apps 🚀
-          </Typography>
+              <Box>
+                <Typography fontWeight="bold">15.8K</Typography>
+                <Typography color="text.secondary">
+                  Followers
+                </Typography>
+              </Box>
 
-          <Stack direction="row" spacing={5} mt={3}>
-            <Box>
-              <Typography fontWeight="bold">128</Typography>
-              <Typography color="text.secondary">
-                Posts
-              </Typography>
-            </Box>
+              <Box>
+                <Typography fontWeight="bold">512</Typography>
+                <Typography color="text.secondary">
+                  Following
+                </Typography>
+              </Box>
+            </Stack>
 
-            <Box>
-              <Typography fontWeight="bold">15.8K</Typography>
-              <Typography color="text.secondary">
-                Followers
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography fontWeight="bold">512</Typography>
-              <Typography color="text.secondary">
-                Following
-              </Typography>
-            </Box>
-          </Stack>
-
-          <Stack direction="row" spacing={2} mt={3}>
-            <Button
-              variant="contained"
-              startIcon={<Edit />}
-              onClick={() => navigate('/edit-profile')}
-            >
-              Edit Profile
-            </Button>
-
-            <Button
-              variant="outlined"
-              color="error"
-              startIcon={<Logout />}
-              onClick={logout}
-            >
-              Logout
-            </Button>
-          </Stack>
-        </Box>
-      </Stack>
-
-      <Divider sx={{ my: 4 }} />
-
-      {/* Tabs */}
-
-      <Tabs
-        value={tab}
-        centered
-        onChange={(e, v) => setTab(v)}
-      >
-        <Tab icon={<GridOn />} label="Reels" />
-
-        <Tab icon={<BookmarkBorder />} label="Saved" />
-
-        <Tab icon={<FavoriteBorder />} label="Liked" />
-
-        <Tab icon={<CommentBankOutlined />} label="Comments" />
-      </Tabs>
-
-      {tab === 0 && renderGrid(reels)}
-
-      {tab === 1 && renderGrid(saved)}
-
-      {tab === 2 && renderGrid(liked)}
-
-      {tab === 3 && (
-        <Stack spacing={2} mt={3}>
-          {comments.map((comment, index) => (
-            <Card
-              key={index}
-              sx={{
-                p: 2,
-              }}
-            >
-              <Stack
-                direction="row"
-                spacing={2}
-                alignItems="center"
+            <Stack direction="row" spacing={2} mt={3}>
+              <Button
+                variant="contained"
+                startIcon={<Edit />}
+                onClick={() => navigate('/edit-profile')}
               >
-                <Avatar src="https://i.pravatar.cc/100" />
+                Edit Profile
+              </Button>
 
-                <Box>
-                  <Typography fontWeight={600}>
-                    @post_by_user
-                  </Typography>
-
-                  <Typography color="text.secondary">
-                    {comment}
-                  </Typography>
-                </Box>
-              </Stack>
-            </Card>
-          ))}
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<Logout />}
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            </Stack>
+          </Box>
         </Stack>
-      )}
-    </Container>
+
+        <Divider sx={{ my: 4 }} />
+        <MyPosts userId={profile?.authId} />
+        {/* Tabs */}
+
+        <Tabs
+          value={tab}
+          centered
+          onChange={(e, v) => setTab(v)}
+        >
+          <Tab icon={<GridOn />} label="Reels" />
+
+          <Tab icon={<BookmarkBorder />} label="Saved" />
+
+          <Tab icon={<FavoriteBorder />} label="Liked" />
+
+          <Tab icon={<CommentBankOutlined />} label="Comments" />
+        </Tabs>
+
+        {tab === 0 && renderGrid(reels)}
+
+        {tab === 1 && renderGrid(saved)}
+
+        {tab === 2 && renderGrid(liked)}
+
+        {tab === 3 && (
+          <Stack spacing={2} mt={3}>
+            {comments.map((comment, index) => (
+              <Card
+                key={index}
+                sx={{
+                  p: 2,
+                }}
+              >
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  alignItems="center"
+                >
+                  <Avatar src="https://i.pravatar.cc/100" />
+
+                  <Box>
+                    <Typography fontWeight={600}>
+                      @post_by_user
+                    </Typography>
+
+                    <Typography color="text.secondary">
+                      {comment}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </Card>
+            ))}
+          </Stack>
+        )}
+      </Container>
+    </Stack>
   );
 }
