@@ -29,7 +29,7 @@ export const uploadAvatar = async (username: string, file: File): Promise<Massag
   formData.append("file", file);
 
   console.log("User Name ", username);
-  const response = await api.patch<MassageResponse>(
+  const response = await api.patch<MassageResponse>(       
     `/user/user/avatar/${username}`,
     formData,
     {

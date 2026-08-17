@@ -4,11 +4,12 @@ export interface UserRequest {
     password: string;
 }
 export interface UserResponse {
-    userId: string;
+    authId: string;
     email: string;
     username: string;
     fullName: string;
     bio: string;
+    dob:Date;
     profilePicUrl: string;
 }
 
