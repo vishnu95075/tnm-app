@@ -53,18 +53,10 @@ const liked = [
   "https://picsum.photos/300?15",
 ];
 
-const comments = [
-  "Great Reel 🔥",
-  "Amazing Content ❤️",
-  "Keep Going 🚀",
-  "Loved it 😍",
-];
 
 
 export default function Profile() {
   const navigate = useNavigate();
-
-  const [tab, setTab] = useState(0);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -80,32 +72,6 @@ export default function Profile() {
     localStorage.removeItem("token");
     return <div>Error loading profile</div>;
   }
-
-  console.log("Data ", profile?.profilePicUrl)
-  const renderGrid = (images: string[]) => (
-    <Grid container spacing={2} mt={1}>
-      {images.map((img, index) => (
-        <Grid size={{ xs: 4 }} key={index}>
-          <Card elevation={0}>
-            <CardMedia
-              component="img"
-              image={img}
-              sx={{
-                height: 220,
-                objectFit: "cover",
-                borderRadius: 2,
-                cursor: "pointer",
-                transition: ".3s",
-                "&:hover": {
-                  transform: "scale(1.03)",
-                },
-              }}
-            />
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
-  );
 
 
 
@@ -218,27 +184,9 @@ export default function Profile() {
         </Stack>
 
         <Divider sx={{ my: 4 }} />
-        <MyPosts userId={profile?.authId} />
         {/* Tabs */}
 
-        <Tabs
-          value={tab}
-          centered
-          onChange={(e, v) => setTab(v)}
-        >
-          <Tab icon={<GridOn />} label="Reels" />
-
-          <Tab icon={<BookmarkBorder />} label="Saved" />
-
-          <Tab icon={<FavoriteBorder />} label="Liked" />
-
-        </Tabs>
-
-        {tab === 0 && renderGrid(reels)}
-
-        {tab === 1 && renderGrid(saved)}
-
-        {tab === 2 && renderGrid(liked)}
+        <MyPosts userId={profile?.authId} />
 
       </Container>
     </Stack>
