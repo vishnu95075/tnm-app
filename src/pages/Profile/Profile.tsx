@@ -232,7 +232,6 @@ export default function Profile() {
 
           <Tab icon={<FavoriteBorder />} label="Liked" />
 
-          <Tab icon={<CommentBankOutlined />} label="Comments" />
         </Tabs>
 
         {tab === 0 && renderGrid(reels)}
@@ -241,36 +240,6 @@ export default function Profile() {
 
         {tab === 2 && renderGrid(liked)}
 
-        {tab === 3 && (
-          <Stack spacing={2} mt={3}>
-            {comments.map((comment, index) => (
-              <Card
-                key={index}
-                sx={{
-                  p: 2,
-                }}
-              >
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  alignItems="center"
-                >
-                  <Avatar src="https://i.pravatar.cc/100" />
-
-                  <Box>
-                    <Typography fontWeight={600}>
-                      @post_by_user
-                    </Typography>
-
-                    <Typography color="text.secondary">
-                      {comment}
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Card>
-            ))}
-          </Stack>
-        )}
       </Container>
     </Stack>
   );
