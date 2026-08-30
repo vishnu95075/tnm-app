@@ -2,30 +2,18 @@ import {
   Avatar,
   Box,
   Button,
-  Card,
-  CardMedia,
   Container,
   Divider,
-  Grid,
   Stack,
-  Tab,
-  Tabs,
   Typography,
 } from "@mui/material";
 
 import {
-  BookmarkBorder,
-  FavoriteBorder,
-  GridOn,
-  //   ChatBubbleOutline,
   Logout,
   Edit,
-  CommentBankOutlined,
 } from "@mui/icons-material";
 
-import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import MyPosts from "./MyPosts";
 
