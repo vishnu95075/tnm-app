@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 import MainLayout from "../layout/MainLayout/MainLayout";
 import EditProfile from "../pages/EditProfile/EditProfile";
+import CreatePost from "../pages/Posts/CreatePost";
 
 const AppRoutes = () => {
   return (
@@ -23,10 +24,11 @@ const AppRoutes = () => {
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
-        
+
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create" element={<CreatePost />} />
           <Route path="/edit-profile" element={<EditProfile />} />
         </Route>
       </Route>
