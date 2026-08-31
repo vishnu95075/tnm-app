@@ -87,8 +87,8 @@ const PostComponent = ({ post }: Props) => {
 
                     {post.type === "image" ? (
                         <img
-                            src={post.image}
-                            alt={post.username}
+                            src={post.mediaUrl}
+                            alt={post.content}
                             style={{
                                 width: 600,
                                 height: 545,
@@ -97,7 +97,7 @@ const PostComponent = ({ post }: Props) => {
                         />
                     ) : (
                         <video
-                            src={post.image}
+                            src={post.mediaUrl}
                             controls={true}
                             autoPlay
                             playsInline

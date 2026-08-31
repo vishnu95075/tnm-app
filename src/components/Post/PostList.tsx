@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import type { Post as PostType } from "../../types/post.types";
-import PostComponent from "./Post";
+import PostComponent from "./PostComponent";
 import Stories from "../../pages/Stories/Stories";
 
 interface Props {
