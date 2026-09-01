@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useId, useRef, useState } from "react";
 import {
   Avatar,
   Box,
@@ -29,6 +29,7 @@ import {
   ArrowBackRounded,
   ArrowForwardRounded,
 } from "@mui/icons-material";
+import { createPost } from "../../api/postApi";
 
 type MediaType = "image" | "video";
 
@@ -40,13 +41,15 @@ interface MediaFile {
 }
 
 interface CreatePostProps {
+  userId: any;
   open: boolean;
   onClose: () => void;
 }
 
-const CreatePostComponent: React.FC<CreatePostProps> = ({ open, onClose }) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const CreatePostComponent: React.FC<CreatePostProps> = ({ userId: id, open, onClose }) => {
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [media, setMedia] = useState<MediaFile[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -138,6 +141,8 @@ const CreatePostComponent: React.FC<CreatePostProps> = ({ open, onClose }) => {
     //
     // await createPost(formData);
 
+    const requestData = createPost(id,caption,formData);
+    console.log("Success Message is: ", requestData);
     setTimeout(() => {
       setUploading(false);
 

@@ -17,31 +17,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import MyPosts from "./MyPosts";
 
-const reels = [
-  "https://picsum.photos/300?1",
-  "https://picsum.photos/300?2",
-  "https://picsum.photos/300?3",
-  "https://picsum.photos/300?4",
-  "https://picsum.photos/300?5",
-  "https://picsum.photos/300?6",
-  "https://picsum.photos/300?7",
-  "https://picsum.photos/300?8",
-  "https://picsum.photos/300?9",
-];
-
-const saved = [
-  "https://picsum.photos/300?10",
-  "https://picsum.photos/300?11",
-  "https://picsum.photos/300?12",
-];
-
-const liked = [
-  "https://picsum.photos/300?13",
-  "https://picsum.photos/300?14",
-  "https://picsum.photos/300?15",
-];
-
-
 
 export default function Profile() {
   const navigate = useNavigate();

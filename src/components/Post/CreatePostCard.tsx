@@ -10,10 +10,12 @@ import {
 import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
 
 import CreatePostComponent from "../../components/Post/CreatePostComponent";
+import type { UserResponse } from "../../types/user.types";
 
-const CreatePostCard: React.FC = () => {
+
+ export const CreatePostCard: React.FC<{ data?: UserResponse }> = ({ data }) => {
     const [open, setOpen] = useState(false);
-
+    console.log("Props CreatePostCard ",data)
     return (
         <>
             <Box
@@ -35,7 +37,7 @@ const CreatePostCard: React.FC = () => {
                     spacing={2}
                 >
                     <Avatar
-                        src="https://i.pravatar.cc/100?img=12"
+                        src={data?.profilePicUrl}
                         sx={{
                             width: 48,
                             height: 48,
@@ -83,6 +85,7 @@ const CreatePostCard: React.FC = () => {
             </Box>
 
             <CreatePostComponent
+                userId = {data?.authId}
                 open={open}
                 onClose={() => setOpen(false)}
             />
