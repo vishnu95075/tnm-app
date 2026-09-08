@@ -1,10 +1,12 @@
 import PostList from "../../components/Post/PostList";
-import { post } from "../../data/posts.data"
+import { getAllFeedHook } from "../../hooks/getAllFeedHook";
 
 export default function Posts() {
+    const { data: feedData, isLoading, isError } = getAllFeedHook();
+    console.log("feedData",feedData);
     return (
         <>
-            <PostList posts={post} />
+            <PostList feeds = {feedData} />
         </>
     );
 }

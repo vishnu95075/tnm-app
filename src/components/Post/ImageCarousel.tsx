@@ -11,7 +11,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 interface ImageCarouselProps {
-  images: string[];
+  images: string[] | undefined;
   height?: number | string;
   autoPlay?: boolean;
   interval?: number;
@@ -26,6 +26,7 @@ export default function ImageCarousel({
   const theme = useTheme();
 
   const [activeStep, setActiveStep] = useState(0);
+  if(images==undefined) return <>Image not found</>
 
   const maxSteps = images.length;
 

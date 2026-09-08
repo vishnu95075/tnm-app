@@ -41,10 +41,11 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     ],
 }));
 
-import type { Post } from "../../types/post.types";
 import { Box } from '@mui/material';
+import type { Feed } from '../../types/feed.types';
+import ImageCarousel from './ImageCarousel';
 interface Props {
-    post: Post;
+    post: Feed;
 }
 
 const PostComponent = ({ post }: Props) => {
@@ -78,36 +79,14 @@ const PostComponent = ({ post }: Props) => {
                         title="Shrimp and Chorizo Paella"
                         subheader="September 14, 2016"
                     />
-                    {/* <CardMedia
-                        component="img"
-                        height="194"
-                        image="/static/images/cards/paella.jpg"
-                        alt="Paella dish"
-                    /> */}
-
-                    {post.type === "image" ? (
-                        <img
-                            src={post.mediaUrl}
-                            alt={post.content}
-                            style={{
-                                width: 600,
-                                height: 545,
-                                objectFit: "cover",
-                            }}
-                        />
-                    ) : (
-                        <video
-                            src={post.mediaUrl}
-                            controls={true}
-                            autoPlay
-                            playsInline
-                            style={{
-                                width: 600,
-                                height: 545,
-                                objectFit: "cover",
-                            }}
-                        />
-                    )}
+                    
+                    {
+                        <ImageCarousel images={post.mediaUrl}
+                            height={400}
+                            autoPlay={false}
+                            interval={3000} />
+                    }
+                    
                     <CardContent>
                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                             This impressive paella is a perfect party dish and a fun meal to cook
