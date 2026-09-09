@@ -1,16 +1,14 @@
 import { Stack } from "@mui/material";
 import PostComponent from "./PostComponent";
 import type { Feed } from "../../types/feed.types";
+import PageSkeleton from "../Skeleton/PageSkeleton";
 
 interface Props {
     feeds: Feed[] | undefined,
 }
 
 export default function PostList({ feeds }: Props) {
-    console.log("feeds PostLis t ", feeds);
-    if (!feeds) return <>No feed here</> // or null, or a skeleton
-
-    if (feeds.length === 0) return <p>No posts yet.</p>;
+    if (!feeds) return <PageSkeleton/> // or null, or a skeleton
 
     return (
         <Stack

@@ -41,18 +41,17 @@ const liked = [
 import { getAllPostByUserIdHook } from "../../hooks/getAllPostByUserId";
 import ImageCarousel from "../../components/Post/ImageCarousel";
 import { useState } from "react";
+import PageSkeleton from "../../components/Skeleton/PageSkeleton";
 
 const MyPosts = (props: any) => {
     const [tab, setTab] = useState(0);
 
     const { data: postData, isLoading, isError } = getAllPostByUserIdHook(props.userId);
-    console.log("User id Mypost : ", props.userId, postData);
-
+    if (isLoading) return <PageSkeleton />;
 
     const renderGrid = (images: string[]) => (
         <Grid container spacing={2} >
             {postData?.map((post, index) => {
-
                 return (<>
                     <Grid size={{ xs: 4 }} key={index}>
                         <Card elevation={0}>
@@ -61,13 +60,10 @@ const MyPosts = (props: any) => {
                                 height={250}
                                 autoPlay={false}
                                 interval={3000}
-                            /> 
+                            />
                         </Card>
                     </Grid>
-
-                </>
-
-                );
+                </>);
             })}
         </Grid>
     );
