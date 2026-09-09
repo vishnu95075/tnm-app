@@ -149,7 +149,7 @@ export default function Profile() {
         <Divider sx={{ my: 4 }} />
         {/* Tabs */}
 
-        <MyPosts userId={profile?.authId} />
+        <MyPosts userId={profile?.userId} />
 
       </Container>
     </Stack>
