@@ -1,14 +1,12 @@
 import { Stack } from "@mui/material";
-import type { Post as PostType } from "../../types/post.types";
 import PostComponent from "./PostComponent";
-import Stories from "../../pages/Stories/Stories";
 import type { Feed } from "../../types/feed.types";
 
 interface Props {
     feeds: Feed[] | undefined,
 }
 
-export default function PostList({ feeds}: Props) {
+export default function PostList({ feeds }: Props) {
     console.log("feeds PostLis t ", feeds);
     if (!feeds) return <>No feed here</> // or null, or a skeleton
 
@@ -28,13 +26,13 @@ export default function PostList({ feeds}: Props) {
             }}
 
         >
-            
-                {feeds.map((post,index) => (
-                    <PostComponent
-                        key={index}
-                        post={post}
-                    />
-                ))}
+
+            {feeds.map((post, index) => (
+                <PostComponent
+                    key={index}
+                    post={post}
+                />
+            ))}
 
 
         </Stack>
