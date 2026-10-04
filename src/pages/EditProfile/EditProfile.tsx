@@ -136,10 +136,17 @@ export default function EditProfile() {
 
   return (
     <Box
+     
       sx={{
+        height: "100vh", // or 700, "calc(100vh - 64px)", etc.
+        overflowY: "auto",
         bgcolor: "#f5f5f5",
         minHeight: "100vh",
-        py: 5,
+        pt:1,
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
       }}
     >
 
