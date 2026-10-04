@@ -56,7 +56,7 @@ const NavLayout = () => {
                     </IconButton>
                     <IconButton
                         component={Link}
-                        to="/like"
+                        to="/likes"
                     >
                         <Badge color="secondary" badgeContent={60} max={10}>
                             <FavoriteBorderOutlinedIcon sx={{ width: 40, height: 40 }} />
@@ -64,7 +64,7 @@ const NavLayout = () => {
                     </IconButton>
                     <IconButton
                         component={Link}
-                        to="/comment"
+                        to="/comments"
                     >
                         <Badge color="secondary" badgeContent={99} max={5}>
                             <CommentOutlinedIcon sx={{ width: 40, height: 40 }} />
@@ -72,7 +72,7 @@ const NavLayout = () => {
                     </IconButton>
                     <IconButton
                         component={Link}
-                        to="/notification"  >
+                        to="/notifications"  >
                         <Badge color="secondary" badgeContent={1000} max={20}>
                             <NotificationsNoneIcon sx={{ width: 40, height: 40 }} />
                         </Badge>

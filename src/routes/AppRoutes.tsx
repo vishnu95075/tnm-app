@@ -12,6 +12,9 @@ import PublicRoute from "./PublicRoute";
 import MainLayout from "../layout/MainLayout/MainLayout";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import CreatePost from "../pages/Posts/CreatePost";
+import NotificationPage from "../pages/Notification/NotificationPage";
+import LikePage from "../pages/Like/LikePage";
+import CommentPage from "../pages/Comment/CommentPage";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +33,9 @@ const AppRoutes = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/notifications" element={<NotificationPage />} />
+          <Route path="/likes" element={<LikePage />} />
+          <Route path="/comments" element={<CommentPage />} />
         </Route>
       </Route>
 
