@@ -15,8 +15,8 @@ import CreatePost from "../pages/Posts/CreatePost";
 import NotificationPage from "../pages/Notification/NotificationPage";
 import LikePage from "../pages/Like/LikePage";
 import CommentPage from "../pages/Comment/CommentPage";
-import SearchPage from "../pages/Search/SearchPage";
 import ReelsPage from "../pages/Reel/ReelsPage";
+import ExplorePage from "../pages/ExplorePage/ExplorePage";
 
 const AppRoutes = () => {
   return (
@@ -38,7 +38,7 @@ const AppRoutes = () => {
           <Route path="/notifications" element={<NotificationPage />} />
           <Route path="/likes" element={<LikePage />} />
           <Route path="/comments" element={<CommentPage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search" element={<ExplorePage/>} />
           <Route path="/reels" element={<ReelsPage />} />
         </Route>
       </Route>
