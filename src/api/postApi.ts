@@ -13,7 +13,7 @@ export const createPost = async (
 ): Promise<string> => {
     const postFormData = new FormData();
 
-    const postDto = { userId: id, content: caption, tags: ["festival", "hi", "enjoy", "clodany"] };
+    const postDto = { userId: id, content: caption, tag: ["festival", "hi", "enjoy", "clodany"] };
     const postDtoBlob = new Blob([JSON.stringify(postDto)], {
         type: "application/json", // Use "application/json" if backend accepts JSON parts
     });
